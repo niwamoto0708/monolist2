@@ -3,13 +3,11 @@
     <div class="item-single-main">
       <div class="image">
         <div class="img-wrap">
-          <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
+          <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', ''), alt: item['itemName']) %>
         </div>
       </div>
       <div class="title">
-        <% #TODO 商品タイトル %>
-        仮タイトル
+        <a href="<%= item['itemUrl'] %>"><%= item['itemCaption'] %></a>
       </div>
       <%= render 'action' , item: @item %>
     </div>

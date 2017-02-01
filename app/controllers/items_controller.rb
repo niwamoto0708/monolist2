@@ -3,13 +3,21 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def new
-    if params[:q]
+    if params[:keyword]
       response = RakutenWebService::Ichiba::Item.search(
-        keyword: params[:q],
+        keyword: params[:keyword],
         imageFlag: 1,
       )
       @items = response.first(8)
     end
+    
+    # @item = Item.find(params[:item_id])
+      
+    # if params[:type] == "Have"
+    #   current_user.have(@item)
+    # elsif params[:type] == "Want"
+    #   current_user.want(@item)
+    # end
   end
 
   def show

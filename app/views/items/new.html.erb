@@ -1,6 +1,6 @@
 <div class="search">
   <%= form_tag new_item_path , method: :get do %>
-    <%= text_field_tag :q , params[:q], placeholder: "キーワードを入力", required: true %>
+    <%= text_field_tag :keyword , params[:keyword], placeholder: "キーワードを入力", required: true %>
     <%= submit_tag "アイテムを検索", name: nil , class: "btn btn-success", data: { disable_with: "検索中..."} %>
   <% end %>
 </div>
@@ -11,7 +11,7 @@
       気になったアイテムが欲しければ「Want」持ってれば「Have」しましょう
     </div>
     <%= render 'items' , items: @items %>
-  <% elsif params[:q].present? %>
+  <% elsif params[:keyword].present? %>
     <div class="alert alert-danger">
       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
       検索したアイテムはありません
