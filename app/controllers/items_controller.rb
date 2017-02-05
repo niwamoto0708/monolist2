@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :logged_in_user , except: [:show]
+  before_action :logged_in_user
   before_action :set_item, only: [:show]
 
   def new
