@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :ownerships, only: [:create, :destroy]
   resources :items , only: [:new , :show]
+  
+  get 'have_ranking', to: 'rankings#have_ranking'
+  get 'want_ranking', to: 'rankings#want_ranking'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

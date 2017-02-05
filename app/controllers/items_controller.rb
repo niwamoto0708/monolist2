@@ -10,14 +10,6 @@ class ItemsController < ApplicationController
       )
       @items = response.first(8)
     end
-    
-    # @item = Item.find(params[:item_id])
-      
-    # if params[:type] == "Have"
-    #   current_user.have(@item)
-    # elsif params[:type] == "Want"
-    #   current_user.want(@item)
-    # end
   end
 
   def show

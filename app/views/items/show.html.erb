@@ -3,11 +3,15 @@
     <div class="item-single-main">
       <div class="image">
         <div class="img-wrap">
-          <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', ''), alt: item['itemName']) %>
+          <%= image_tag(@item.large_image, alt: @item.description) %>
         </div>
       </div>
       <div class="title">
-        <a href="<%= item['itemUrl'] %>"><%= item['itemCaption'] %></a>
+        <a href="<%= @item.detail_page_url %>"><%= @item.title %></a>
+        <% content_for :head do %>
+          <title><%= @item.title %>- monolist</title>
+          <meta name="description" content="<%= @item.description %>に関する情報です。<%= @item.title %>この商品を欲しい人、持ってる人を表示しています。">
+        <% end %>
       </div>
       <%= render 'action' , item: @item %>
     </div>
@@ -15,19 +19,21 @@
       <div class="side-box">
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Haveしたユーザー一覧 %>
-
+          <% @item.have_users.each do |user| %>
+          <%= link_to (gravatar_for user, {size: 40}), user %>
+          <% end %>
         </div>
       </div>
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Wantしたユーザー一覧 %>
+          <% @item.want_users.each do |user| %>
+          <%= link_to (gravatar_for user, {size: 40}), user %>
+          <% end %>
         </div>
       </div>
       <div class="text-center">
-        <% #TODO 正しいリンク先に %>
-        <%= link_to('楽天詳細ページへ', '#') %>
+        <%= link_to('楽天詳細ページへ', 'http://item.rakuten.co.jp/dorama/n33275817/') %>
       </div>
     </div>
   </div>

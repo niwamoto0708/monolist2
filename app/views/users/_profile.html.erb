@@ -3,32 +3,32 @@
     <%= gravatar_for user, size: 100 %>
   </div>
   <div class="name">
-    <h1><%= user.name %><h1>
+    <h1><%= user.name %></h1>
   </div>
   <div class="status">
     <ul>
       <li>
         <div class="status-label">FOLLOWING</div>
         <div class="status-value">
-          <%= user.following_users.count %>
+          <%= current_user.following_users.count %>
         </div>
       </li>
       <li>
         <div class="status-label">FOLLOWERS</div>
         <div id="followers" class="status-value">
-          <%= user.followed_users.count %>
+          <%= current_user.followed_users.count %>
         </div>
       </li>
       <li>
         <div class="status-label">WANT</div>
         <div id="want_count" class="status-value">
-          <%= item.wants.count %>
+          <%= current_user.wants.count %>
         </div>
       </li>
       <li>
         <div class="status-label">HAVE</div>
         <div id="have_count" class="status-value">
-          <%= item.haves.count %>
+          <%= current_user.haves.count %>
         </div>
       </li>
     </ul>
